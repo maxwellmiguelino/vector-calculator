@@ -1,0 +1,171 @@
+/*
+Maxwell Miguelino
+Spring 2021
+Vector Calculator
+
+The purpose of this program is to calculate the individual and total x and y values of 3 vectors given by angles and magnitude.
+
+Main:
+1) Ask user input for vector length, angles = (done)
+2) Output calculation of vector length = (done)
+3) Ask user if they want to do another calculation with the vectors = (done)
+4) Ask user if they want to change values = (done)
+*/
+
+#include <iomanip>
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#define PI 3.14159265
+
+using namespace std;
+
+int main()
+{
+    //Initialization for boolean run that determines whether or not program runs again
+    bool runAgain = true;
+    
+    //Only runs again if runAgain is true
+    while (runAgain == true)
+    {
+        //Initialization for vector A length and angle inputs
+        double vectorLengthA, vectorAngleA;
+        
+        //Initialization for vector B length and angle inputs
+        double vectorLengthB, vectorAngleB;
+        
+        //Initialization for vector C length and angle inputs
+        double vectorLengthC, vectorAngleC;
+        
+        //Initialization for boolean inputAgain to determine whether or not program ask for new inputs again
+        bool inputAgain = true;
+        
+        //Only runs again if inputAgain is true
+        while (inputAgain == true)
+        {
+            //Prompt & input for Vector A
+            cout << "Input Vector A's length: ";
+            cin >> vectorLengthA;
+            cout << "Vector A's angle: ";
+            cin >> vectorAngleA;
+            
+            //Prompt & input for Vector B
+            cout << "Input Vector B's length: ";
+            cin >> vectorLengthB;
+            cout << "Vector B's angle: ";
+            cin >> vectorAngleB;
+            
+            //Prompt & input for Vector C
+            cout << "Input Vector C's length: ";
+            cin >> vectorLengthC;
+            cout << "Input Vector C's angle: ";
+            cin >> vectorAngleC;
+            
+            //Prompt for inputTrueFalse
+            cout << endl << "Would you like to re-input these values? (yes or no): ";
+            
+            //Initialization for inputTrueFalse to determine inputAgain's true or false value
+            string inputTrueFalse;
+            
+            //Input for inputTrueFalse
+            cin >> inputTrueFalse;
+            
+            //Evaluation True for inputTrueFalse
+            if (inputTrueFalse == "yes")
+            {
+                //Prompt user to restart input
+                cout << "Restarting input stage... " << endl;
+            }
+            
+            //Evaluation False for inputAgainTrueFalse
+            else
+            {
+                //runAgain Modifier
+                inputAgain = false;
+                
+                //Spacing
+                cout << endl;
+            }
+        }
+        
+        //Vector initialization for x values
+        double vectorAx, vectorBx, vectorCx, vectorTotalx;
+        
+        //Vector initialization for y values
+        double vectorAy, vectorBy, vectorCy, vectorTotaly;
+        
+        //Vector A calculation for x & y values
+        vectorAx = vectorLengthA*cos(vectorAngleA * PI / 180.0);
+        vectorAy = vectorLengthA*sin(vectorAngleA * PI / 180.0);
+        
+        //Vector B calculation for x & y values
+        vectorBx = vectorLengthB*cos(vectorAngleB * PI / 180.0);
+        vectorBy = vectorLengthB*sin(vectorAngleB * PI / 180.0);
+        
+        //Vector C calculation for x & y values
+        vectorCx = vectorLengthC*cos(vectorAngleC * PI / 180.0);
+        vectorCy = vectorLengthC*sin(vectorAngleC * PI / 180.0);
+        
+        vectorTotalx = vectorAx + vectorBx + vectorCx;
+        vectorTotaly = vectorAy + vectorBy + vectorCy;
+        
+        //Constant Initialization for setw width(s)
+        const int WIDTH_1 = 15;
+        
+        //Spacing
+        cout << endl;
+        
+        //Print Vector A
+        cout << left << setw (WIDTH_1) << "Vector A: " 
+        << "< " << setprecision (2) << fixed << vectorAx 
+        << " , " << setprecision (2) << fixed << vectorAy << " >" 
+        << endl;
+        
+        //Print Vector B
+        cout << left << setw (WIDTH_1) << "Vector B: " 
+        << "< " << setprecision (2) << fixed << vectorBx 
+        << " , " << setprecision (2) << fixed << vectorBy << " >" 
+        << endl;
+        
+        //Print Vector C
+        cout << left << setw (WIDTH_1) << "Vector C: " 
+        << "< " << setprecision (2) << fixed << vectorCx 
+        << " , " << setprecision (2) << fixed << vectorCy << " >" 
+        << endl;
+        
+        //Print Vector Total
+        cout << left << setw (WIDTH_1) << "Vector Total: " 
+        << "< " << setprecision (2) << fixed << vectorTotalx 
+        << " , " << setprecision (2) << fixed << vectorTotaly << " >" 
+        << endl;
+        
+        //Prompt user if they would like to run the program again
+        cout << endl << "Would you like to run another calculation? (yes or no): ";
+        
+        //String initialization for user input
+        string runAgainTrueFalse;
+        
+        //User input answer
+        cin >> runAgainTrueFalse;
+        
+        //Evaluation True for runAgainTrueFalse
+        if (runAgainTrueFalse == "yes")
+        {
+            //Prompt user to run again
+            cout << "Running Again... " << endl;
+        }
+        
+        //Evaluation False for runAgainTrueFalse
+        else
+        {
+            //runAgain Modifier
+            runAgain = false;
+            
+            //Thank you note
+            cout << endl << "Thank you for using my program!" << endl
+            << "-Maxwell M.";
+        }
+    }
+    
+    return 0;
+}
